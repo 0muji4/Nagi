@@ -1,0 +1,16 @@
+# Nagi の UniFFI 公開層。純粋な規則コア（nagi_core）を、各プラットフォームの
+# ネイティブ UI（Kotlin / 後で Swift）から呼べるように公開する。
+# このクレートだけが uniffi に依存し、core は依存ゼロのまま保つ（DD Q1 の規則と感覚の分離）。
+[package]
+name = "nagi_ffi"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+# cdylib: Android が読み込む .so / staticlib: iOS 用の静的ライブラリ / lib: bindgen・テスト用。
+crate-type = ["cdylib", "staticlib", "lib"]
+
+[dependencies]
+nagi_core = { path = "../core" }
+# cli フィーチャは Kotlin/Swift バインディング生成（uniffi-bindgen）に必要。
+uniffi = { version = "0.29", features = ["cli"] }
