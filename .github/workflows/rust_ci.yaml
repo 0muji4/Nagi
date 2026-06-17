@@ -1,0 +1,46 @@
+name: Rust CI
+
+# rust/ を変更する PR と、その main へのマージで、規則レイヤーの整形・lint・テストを強制する。
+# README / CONTRIBUTING が掲げる「規約は CI で強制」を Rust について実装するもの。
+# 検証できないコード（FFI/Android）を今後足す前に、自動の安全網をここで用意する。
+on:
+  pull_request:
+    paths:
+      - "rust/**"
+      - ".github/workflows/rust_ci.yaml"
+  push:
+    branches: [main]
+    paths:
+      - "rust/**"
+      - ".github/workflows/rust_ci.yaml"
+
+permissions:
+  contents: read
+
+# 同一 PR / ブランチで新しい push があれば、進行中の実行を打ち切る。
+concurrency:
+  group: rust-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rust-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rust
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust toolchain (rustfmt, clippy)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Cache cargo build
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust
+      - name: Format (rustfmt / 公式 Style Guide)
+        run: cargo fmt --check
+      - name: Lint (clippy, warnings = error)
+        run: cargo clippy --all-targets -- -D warnings
+      - name: Test
+        run: cargo test
