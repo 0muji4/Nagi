@@ -1,0 +1,40 @@
+# --- macOS ---
+.DS_Store
+
+# --- Rust (core/) ---
+# ビルド成果物。再生成可能なのでコミットしない。
+target/
+**/*.rs.bk
+# Cargo.lock は意図的に追跡する（アプリのため再現性を優先）。
+
+# --- Android（今後）---
+# Gradle / ビルド成果物・ローカル設定・NDK 中間生成物。
+.gradle/
+build/
+**/build/
+local.properties
+.cxx/
+captures/
+.externalNativeBuild/
+# UniFFI が生成する Kotlin バインディングはビルド時生成物。再生成するなら無視。
+# （生成物をコミットする運用に切り替えるなら、この行を外す）
+# **/generated/uniffi/
+
+# --- iOS / Xcode（後続）---
+xcuserdata/
+**/*.xcuserstate
+DerivedData/
+.swiftpm/
+Pods/
+
+# --- IDE / エディタ ---
+.idea/
+*.iml
+.vscode/
+
+# --- Claude Code ---
+# プロジェクト共有設定（.claude/settings.json）は追跡し、個人ローカル設定だけ無視する。
+.claude/settings.local.json
+
+# --- 環境・秘匿情報 ---
+.env
