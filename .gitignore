@@ -33,8 +33,9 @@ Pods/
 .vscode/
 
 # --- Claude Code ---
-# プロジェクト共有設定（.claude/settings.json）は追跡し、個人ローカル設定だけ無視する。
-.claude/settings.local.json
+# 設定は個人・マシン依存（絶対パスや個人 skill 許可など）になりやすいため追跡しない。
+# 将来チームで共有したい方針が固まったら、精査した settings.json だけ追跡対象に戻す。
+.claude/
 
 # --- 環境・秘匿情報 ---
 .env
