@@ -30,7 +30,7 @@
 - **1 PR = 1 commit**: PR は必ず 1 コミットにまとめる（複数になったら squash する）。
 - **コミット件名 = PR タイトル**: コミットの件名は PR タイトルで始め、末尾はピリオドにする。
   - 例: PR タイトル `[iOS] 設定画面を追加` → コミット件名 `[iOS] 設定画面を追加.`
-- **カテゴリ接頭辞**: Issue・PR のタイトルは `[カテゴリ]` で始める。許可カテゴリは [hack/prefix.yaml](hack/prefix.yaml) を唯一の出所として管理する（`iOS` / `Rust` / `Android` / `CI/CD` / `Docs` / `Infra`。複合は `[iOS/Rust]`）。
+- **カテゴリ接頭辞**: Issue・PR のタイトルは `[カテゴリ]` で始める。許可カテゴリは [hack/prefix.yaml](hack/prefix.yaml) を唯一の出所として管理する（`iOS` / `Rust` / `Android` / `CI/CD` / `Docs` / `Infra` / `Chore`。複合は `[iOS/Rust]`）。`Chore` はツール・設定・雑務（`.gitignore`、formatter、依存更新など）。
 - **Issue との紐付け**: PR 本文で `Closes #<番号>` 等の closing キーワードを使い、対応 Issue を必ず参照する（マージで Issue が閉じる）。
 
 ### なぜ
