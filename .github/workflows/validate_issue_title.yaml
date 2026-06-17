@@ -1,0 +1,19 @@
+name: Validate issue title
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-issue-title:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate issue title prefix
+        env:
+          # env 経由で渡し、シェルへの式展開（インジェクション）を避ける。
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: sh hack/validate_issue_title.sh
