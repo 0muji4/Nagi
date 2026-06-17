@@ -16,6 +16,10 @@ local.properties
 .cxx/
 captures/
 .externalNativeBuild/
+# Kotlin Gradle プラグインのビルドキャッシュ/ログ。
+.kotlin/
+# Rust から生成する .so（hack/build-rust-android.sh が再生成するので追跡しない）。
+**/jniLibs/
 # UniFFI が生成する Kotlin バインディングはビルド時生成物。再生成するなら無視。
 # （生成物をコミットする運用に切り替えるなら、この行を外す）
 # **/generated/uniffi/
