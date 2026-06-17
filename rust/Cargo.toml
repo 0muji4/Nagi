@@ -1,0 +1,8 @@
+# Nagi の Rust サブツリー（規則の層）の Cargo workspace。
+# 規則（core）と、将来の FFI 公開層（ffi）を束ねる。プラットフォーム別アプリ
+# （android/・後の ios/）は、ここで生成される .so とバインディングを消費する。
+[workspace]
+resolver = "3"
+members = ["core"]
+# PR② で UniFFI 公開層を追加する想定:
+# members = ["core", "ffi"]
