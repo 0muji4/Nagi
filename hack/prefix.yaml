@@ -1,6 +1,14 @@
 # Issue / PR / コミットのタイトルに付ける許可カテゴリ。
 # hack/validate_pr.sh と hack/validate_issue_title.sh が唯一の出所として参照する。
 # 複合は "/" でつなぐ（例: [iOS/Rust]）。詳細は CONTRIBUTING.md を参照。
+#
+# 横断カテゴリの使い分け:
+#   CI/CD … CI/CD パイプライン（GitHub Actions 等）
+#   Infra … クラウド・デプロイ等のインフラ
+#   Chore … ツール・設定・雑務（.gitignore, formatter, 依存更新 など。Conventional Commits の chore に相当）
+#
+# 注意: 各カテゴリ行にインラインコメント（# ...）を付けないこと。
+#       パーサが "- 名前" を抽出するため、行内に # を混ぜると名前が壊れる。
 categories:
   - iOS
   - Rust
@@ -8,3 +16,4 @@ categories:
   - CI/CD
   - Docs
   - Infra
+  - Chore
