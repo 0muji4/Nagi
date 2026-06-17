@@ -34,8 +34,9 @@ Pods/
 
 # --- Claude Code ---
 # 設定は個人・マシン依存（絶対パスや個人 skill 許可など）になりやすいため追跡しない。
-# 将来チームで共有したい方針が固まったら、精査した settings.json だけ追跡対象に戻す。
-.claude/
+# ただしプロジェクト共有のスキル（.claude/skills/）は追跡し、チームで再利用する。
+.claude/*
+!.claude/skills/
 
 # --- 環境・秘匿情報 ---
 .env
