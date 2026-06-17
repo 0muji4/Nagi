@@ -1,0 +1,10 @@
+# Issue / PR / コミットのタイトルに付ける許可カテゴリ。
+# hack/validate_pr.sh と hack/validate_issue_title.sh が唯一の出所として参照する。
+# 複合は "/" でつなぐ（例: [iOS/Rust]）。詳細は CONTRIBUTING.md を参照。
+categories:
+  - iOS
+  - Rust
+  - Android
+  - CI/CD
+  - Docs
+  - Infra
